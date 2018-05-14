@@ -1,0 +1,33 @@
+Originally in -
+
+	D:\dign\OT\udui
+
+Componentizing UDUI stuff.  I.e., making it a NPM module. On github.
+
+Starting with my boilerplate from -
+
+	D:\dign\OT\VSCode\boilerplate
+
+Just copied, pasted those files here. Then -
+
+	>npm install
+
+	In another cmd window -
+
+		>node src\server\app.js
+
+	Then in the first cmd window -
+
+	>npm run bs		//  I.e., runs the browsersync script in package.json
+
+
+
+Browserify -
+
+	Read it again - 
+
+		https://github.com/browserify/browserify-handbook
+
+
+
+

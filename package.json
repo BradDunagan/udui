@@ -1,0 +1,28 @@
+{
+  "name": "udui",
+  "version": "1.0.0",
+  "description": "User Defined User Interface with SVG, D3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bs": "browser-sync start --config bs-config.js"
+  },
+  "keywords": [
+    "DS"
+  ],
+  "author": "Brad Dunagan",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.1.1",
+    "pix-diff": "^2.0.1",
+    "protractor": "^5.3.1"
+  },
+  "dependencies": {
+    "d3": "^5.1.0",
+    "express": "^4.16.2",
+    "font-awesome": "^4.7.0"
+  }
+}

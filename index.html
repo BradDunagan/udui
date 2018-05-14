@@ -1,0 +1,109 @@
+<! DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>UDUI</title>
+		<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="src/client/styles/app.css">
+	</head>
+
+	<body id='app-body'>
+		<!--
+		<div style="display: block; height: auto">
+			<div w3-include-html="tryD3.html">	</div>
+		</div>
+		-->
+		<!--
+		<div style="display: block; height: auto;">
+			<section>
+				<input id="udui-e2et-cmd-input"  type="text" style="width:400px">
+				<input id="udui-e2et-cmd-output" type="text" style="width:400px">
+			</section>            
+		</div>
+		<div style="display: block; height: auto">
+			<svg id="uduiRootRoot" 
+				class="rr-root-root-svg"
+				version="1.1"
+				baseProfile="full"
+				width="280" height="200"
+				xmlns="http://www.w3.org/2000/svg">
+			</svg>
+		</div>
+		-->
+		<div style="display: block; height: auto">
+			<svg id="uduiRootRoot" 
+				class="rr-root-root-svg-full-screen"
+				version="1.1"
+				baseProfile="full"
+				width="100%" height="100%"
+				xmlns="http://www.w3.org/2000/svg">
+			</svg>
+		</div>
+		<script>
+			//	https://www.w3schools.com/howto/howto_html_include.asp
+			function includeHTML() {
+				var z, i, elmnt, file, xhttp;
+				/*loop through a collection of all HTML elements:*/
+				z = document.getElementsByTagName("*");
+				for (i = 0; i < z.length; i++) {
+				elmnt = z[i];
+				/*search for elements with a certain atrribute:*/
+				file = elmnt.getAttribute("w3-include-html");
+				if (file) {
+					/*make an HTTP request using the attribute value as the file name:*/
+					xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4) {
+						if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+						if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+						/*remove the attribute, and call this function once more:*/
+						elmnt.removeAttribute("w3-include-html");
+						includeHTML();
+					}
+					} 
+					xhttp.open("GET", file, true);
+					xhttp.send();
+					/*exit the function:*/
+					return;
+				}
+				}
+			}
+			includeHTML();
+		</script>		
+		<script>
+		//	function e2eSetCmdOutputText ( text ) {
+		//		document.querySelector ( '#udui-e2et-cmd-output' ).value = text;
+		//	}	//	e2eSetCmdOutputText()
+
+		//	function e2eOnCmdChange ( text ) {
+		//		var cmd = JSON.parse ( text );
+		//		if ( cmd.cmd === 'test-cmd-input' ) {
+		//			let out = { status: 'ok' };
+		//			e2eSetCmdOutputText ( JSON.stringify ( out ) );
+		//		}
+		//	}	//	e2eOnCmdChange()
+
+		//	function onInput ( event ) {
+		//		var sW = 'onInput()';
+		//		//	Called when input's value changes - key press, delete, paste, etc..
+		//		//	https://developer.mozilla.org/en-US/docs/Web/Events/input
+		//	}	//	onInput()
+
+		//	function onChange ( event ) {
+		//		var sW = 'onChange()';
+		//		let text = event.target.value;
+		//		console.log ( sW + ': ' + text );
+		//		//	Called when input focus is lost or when Enter key is pressed.
+		//		//	https://developer.mozilla.org/en-US/docs/Web/Events/change
+		//		e2eOnCmdChange ( text );
+		//	}	//	onChange()
+
+		//	document.addEventListener ( 'DOMContentLoaded', function() {
+		//		document.querySelector ( '#udui-e2et-cmd-input' ).oninput  = onInput;
+		//		document.querySelector ( '#udui-e2et-cmd-input' ).onchange = onChange;
+		//	}, false );
+		</script>
+		<script src="src/client/main_bundle.js"></script>
+	</body>
+</html>
+

@@ -1,0 +1,40 @@
+<div style="height: auto">
+    <section>
+        <input id="udui-e2et-cmd-input"  type="text" style="width:400px">
+        <input id="udui-e2et-cmd-output" type="text" style="width:400px">
+    </section>            
+</div>
+<p>
+    Below is an SVG element with margin and padding set at 4 pixels (you can change that
+    with the F12 debugger). In that is a root &ltg&gt that is drawn with JavaScript along with
+    its contents. Its border is set to be large (~9 pixels), black and semitransparent - its width 
+    is called the containerBorderWidth.
+    The width of the root &ltg&gt is determined from the inside width of the parent &ltSVG&gt 
+    element with &ltnode&gt.width.baseVal.value. The widths of the blue internal rectangles 
+    is w - the distance between the inside edges of the root &ltg&gt border - and it is called
+    the containerWidth. That is -
+</p>
+<p><code style="margin-left:10px;">containerWidth  = svgNode.width.baseVal.value;</code>
+</p>
+<p><code style="margin-left:10px;">containerHeight = svgNode.height.baseVal.value;</code>
+</p>
+<p><code style="margin-left:10px;">w = containerWidth - (containerBorderWidth * 2);</code>
+</p>
+<p>
+    In other words, the container below is the light-gray border and what is drawn inside it. 
+</p>
+<p>
+    Note that <code>bw</code> (border width) below is the width of the borders of the items drawn 
+    <i>inside</i> the container. So, this shows that when drawing an item to properly fill a container - and 
+    not draw outside the inner bounds of the container - you must consider the border width of the 
+    item.
+</p>
+<div style="height: auto">
+    <svg id="tryD3Root" 
+        class="rr-root-root-svg"
+        version="1.1"
+        baseProfile="full"
+        width="200" height="200"
+        xmlns="http://www.w3.org/2000/svg">
+    </svg>
+</div>
