@@ -318,7 +318,7 @@ module.exports = (function() {
 			'isMenu', 'itemData', 'ff', 'fs', 'vh', 'type', 'textId', 'sclrX', 'sclrY', 'bSplitPanel',
 			'bSaveRect', 'createdInSysId', 'createdByUserId', 'storeId', 'storeName', 'value', 'grid',
 			'isEnabled', 'isVisible', 'spaceX', 'spaceY', 'hasBorder', 'class', 'horzAlign', 'vertAlign',
-			'docked', 'bMoveRect', 'bSizeRect', 'bVertSB', 'bHorzSB', 'inputType' ];
+			'docked', 'bMoveRect', 'hasCloseBox', 'bSizeRect', 'bVertSB', 'bHorzSB', 'inputType' ];
 		var tableColsWhiteList = [ 'iCol', 'colStyleId', 'divStyleId', 'tdStyleId', 'hasDiv', 'isSplitter' ];
 
 		function setChildPanelStoreNames ( pd0 ) {
@@ -504,6 +504,7 @@ module.exports = (function() {
 														 docked: 		itemD.docked,
 														 bMoveRect: 	itemD.bMoveRect,
 														 bSizeRect: 	itemD.bSizeRect,
+														 hasCloseBox: 	itemD.hasCloseBox,
 														 bVertSB: 		itemD.bVertSB,
 														 bHorzSB: 		itemD.bHorzSB } );
 				pd.sclrX = itemD.sclrX;

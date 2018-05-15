@@ -101,7 +101,9 @@ module.exports = (function() {
 	svc.VERT_SCROLL_WIDTH  		= 7;
 	svc.HORZ_SCROLL_HEIGHT 		= 7;
 
-	svc.MOVE_HANDLE_WIDTH  		= 7;
+	svc.BAR_BOX_BORDER_WIDTH 	= 1;		//	2018-May-14 	"bar boxes" are the move, save, close
+											//	(others?) "handles" that appear along the top of panels
+	svc.MOVE_HANDLE_WIDTH  		= 7;		//	on pointer proximity.
 	svc.MOVE_HANDLE_HEIGHT 		= 7;
 
 	svc.SIZE_HANDLE_WIDTH		= 7;

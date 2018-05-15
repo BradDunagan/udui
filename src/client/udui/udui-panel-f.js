@@ -1081,8 +1081,19 @@ module.exports = (function() {
 //			d.tphf = d.topPanel.data.h / d.h;		//	Top Panel Height Factor
 //	}	//	dragSizeStarted()
 
+	//	2018-May-14		This  "bar"  is the area along the top of some panels 
+	//	where the move, save, close boxes might appear - on pointer proximity.
+	function barBoxWidth ( d ) {
+		return (d.hasBorder ? uc.PANEL_BORDER_WIDTH : 0) + uc.VERT_SCROLL_WIDTH  + uc.SCROLL_BORDER_WIDTH;
+	}
+
+	function barBoxHeight ( d ) {
+		return (d.hasBorder ? uc.PANEL_BORDER_WIDTH : 0) + uc.HORZ_SCROLL_HEIGHT + uc.SCROLL_BORDER_WIDTH;
+	}
+
 	function closeHandleX ( d ) {		//	d is of the panel g
-		return d.baseData[0].w - uc.CLOSE_HANDLE_WIDTH + uc.OFFS_4_1_PIX_LINE;
+	//	return d.baseData[0].w - uc.CLOSE_HANDLE_WIDTH + uc.OFFS_4_1_PIX_LINE;
+		return d.baseData[0].w - barBoxWidth ( d ) + (2 * uc.BAR_BOX_BORDER_WIDTH) - uc.OFFS_4_1_PIX_LINE;
 	}
 
 	function sizeStart ( d, i, ele ) {
@@ -4249,8 +4260,10 @@ module.exports = (function() {
 			if ( ! d.bMoveRect ) 
 				return;
 			//	move handle is same size as the size handle
-			var w  = (d.hasBorder ? uc.PANEL_BORDER_WIDTH : 0) + uc.VERT_SCROLL_WIDTH  + uc.SCROLL_BORDER_WIDTH;
-			var h  = (d.hasBorder ? uc.PANEL_BORDER_WIDTH : 0) + uc.HORZ_SCROLL_HEIGHT + uc.SCROLL_BORDER_WIDTH;
+		//	var w  = (d.hasBorder ? uc.PANEL_BORDER_WIDTH : 0) + uc.VERT_SCROLL_WIDTH  + uc.SCROLL_BORDER_WIDTH;
+		//	var h  = (d.hasBorder ? uc.PANEL_BORDER_WIDTH : 0) + uc.HORZ_SCROLL_HEIGHT + uc.SCROLL_BORDER_WIDTH;
+			var w  = barBoxWidth ( d );
+			var h  = barBoxHeight ( d );
 			d3.select ( this )
 				.append ( 'rect' )	
 				.attr ( 'id',     function ( d, i ) { return d.eleId + '-move'; } )
@@ -4297,8 +4310,11 @@ module.exports = (function() {
 		//		.attr ( 'x',       x + uc.OFFS_4_1_PIX_LINE )
 				.attr ( 'x',       closeHandleX )
 				.attr ( 'y',       0 + uc.OFFS_4_1_PIX_LINE )
-				.attr ( 'width',   uc.CLOSE_HANDLE_WIDTH )
-				.attr ( 'height',  uc.CLOSE_HANDLE_HEIGHT )
+			//	.attr ( 'width',   uc.CLOSE_HANDLE_WIDTH )
+			//	.attr ( 'height',  uc.CLOSE_HANDLE_HEIGHT )
+				.attr ( 'width',   barBoxWidth )
+				.attr ( 'height',  barBoxHeight )
+				.attr ( 'stroke-width', uc.BAR_BOX_BORDER_WIDTH )
 				.attr ( 'class',   'u34-close-handle-transparent' )
 				.on ( 'mouseover', uCD.mouseoverClose )
 				.on ( 'mouseout',  uCD.mouseleaveClose )

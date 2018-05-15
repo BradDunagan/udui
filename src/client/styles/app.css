@@ -164,14 +164,14 @@ body > div {
 .u34-close-handle-transparent {
 	fill: 			transparent; 
 	stroke: 		transparent; 
-	stroke-width: 	1;
+/*	stroke-width: 	1;				*/
 	cursor: 		default;
 }
 
 .u34-close-handle {
 	fill: 			white; 
 	stroke: 		gray; 
-	stroke-width: 	1;
+/*	stroke-width: 	1;				*/
 	cursor: 		default;
 }
 

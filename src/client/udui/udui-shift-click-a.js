@@ -226,12 +226,13 @@ module.exports = (function() {
 				else
 				if ( subItemData.textId === 'panel' ) {
 					var panelD = uPanel.createPanelData ( 
-						{ x: 		lcl.x + uc.OFFS_4_1_PIX_LINE,
-						  y: 		lcl.y + uc.OFFS_4_1_PIX_LINE, 
-						  w: 		400, 
-						  h: 		170, 
-						  name: 	'control-panel', 
-						  clickCB: 	svc.shiftClickPanel } );
+						{ x: 			lcl.x + uc.OFFS_4_1_PIX_LINE,
+						  y: 			lcl.y + uc.OFFS_4_1_PIX_LINE, 
+						  w: 			400, 
+						  h: 			170, 
+						  name: 		'pnlNew', 
+						  hasCloseBox: 	true,
+						  clickCB: 		svc.shiftClickPanel } );
 					rrePanel = panelData.panel.addControl ( panelD );
 				//	//	Controls on it.
 				//	rrePanel.addControl ( uButton.createButtonData ( { x: 		150,  
