@@ -3529,6 +3529,21 @@ module.exports = (function() {
 			uc.rootPanel.removeDialog ( dlg );
 		}	//	onCancel()
 		
+		function populatePanelList ( listData ) {
+			listData.itemData = [];
+			var panelList = uSL.getPanelList ( sW, uc.ROOT_UDUI_ID );
+			var i, n = panelList.length;
+			for ( i = 0; i < n; i++ ) {
+				var pnl = panelList[i];
+
+				var itm = { textId: pnl.id + pnl.name,
+							text: 	pnl.name,
+							data: 	pnl };
+				listData.itemData.push ( uList.createListItemData ( itm ) );
+			}
+			listData.update();
+		}	//	populatePanelList()
+
 		var o = { 
 			sC: 		sW, 
 			itemName: 	{
@@ -3556,29 +3571,20 @@ module.exports = (function() {
 
 		if ( o.panel ) {
 			if ( (cd = o.panel.getControlDataByName ( 'lstPanelNames' )) !== null ) {
-				cd.itemData = [];
-				var panelList = uSL.getPanelList ( sW, uc.ROOT_UDUI_ID );
-				var i, n = panelList.length;
-				for ( i = 0; i < n; i++ ) {
-					var pnl = panelList[i];
-
-					var itm = { textId: pnl.id + pnl.name,
-								text: 	pnl.name,
-								data: 	pnl };
-					cd.itemData.push ( uList.createListItemData ( itm ) );
-				}
-				cd.update();
+				populatePanelList ( cd );
 				cd.cb = onListPanelNamesItemClick;
 			}
+			
 			if ( (cd = o.panel.getControlDataByName ( 'btnOK' )) !== null )
 				cd.cb = onOK;
 			if ( (cd = o.panel.getControlDataByName ( 'btnCancel' )) !== null )
 				cd.cb = onCancel;
+			
 			return;
 		}
 
 		var w = 200;
-		var h = 140;
+		var h = 160;
 		var x = Math.round ( (rpd.w - w) / 2 );
 		var y = Math.round ( (rpd.h - h) / 2 );
 
@@ -3594,15 +3600,23 @@ module.exports = (function() {
 
 		uc.rootPanel.appendDialog ( dlg );
 
+		var list = dlg.panel.addControl ( uList.createListData ( { x: 		20,
+																   y: 		20,
+																   w: 		80,
+																   h: 		100,
+																   name: 	'lstPanelNames',
+																   cb:		onListPanelNamesItemClick } ) );
+		populatePanelList ( list.data );
+
 		dlg.panel.addControl ( uButton.createButtonData ( { x: 		20,
-														    y: 		60,
+														    y: 		130,
 														    w: 		60,  
 														    h: 		20, 
 														    name: 	'btnOK',
 														    text: 	'OK',
 														    cb: 	onOK } ) );
-		dlg.panel.addControl ( uButton.createButtonData ( { x: 		80,
-														    y: 		60,
+		dlg.panel.addControl ( uButton.createButtonData ( { x: 		90,
+														    y: 		130,
 														    w: 		60,  
 														    h: 		20, 
 														    name: 	'btnCancel',
